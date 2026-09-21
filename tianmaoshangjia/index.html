@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="天猫商家入驻指南、运营策略、店铺装修规范及数据分析工具，为品牌商家提供全方位的电商运营解决方案。">
+    <meta name="keywords" content="天猫商家,天猫入驻,天猫运营,电商指南,品牌营销">
+    <title>天猫商家-品牌入驻与全渠道运营服务平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #ff0036;
+            --primary-hover: #cc002a;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --text-light: #999999;
+            --bg-body: #f5f5f5;
+            --bg-card: #ffffff;
+            --border-color: #e5e5e5;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fff0f3 0%, #fff 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item h3 {
+            font-size: 32px;
+            color: var(--text-main);
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Navigation Toggles */
+        .category-nav {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border-color);
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .category-nav .container {
+            display: flex;
+            gap: 40px;
+            padding: 15px 20px;
+            min-width: var(--container-width);
+        }
+
+        .category-nav a {
+            font-size: 15px;
+            color: var(--text-main);
+            position: relative;
+        }
+
+        .category-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .view-all {
+            font-size: 14px;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        /* Card Grid */
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .card-img {
+            height: 180px;
+            background-color: #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.05);
+        }
+
+        .card-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--text-light);
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        /* Guide List */
+        .guide-list {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .guide-item {
+            display: flex;
+            gap: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .guide-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .guide-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #fff0f3;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .guide-content h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .guide-content p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(90deg, #333 0%, #000 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .cta-banner p {
+            color: #ccc;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .faq-question::before {
+            content: 'Q';
+            color: var(--primary-color);
+            font-size: 12px;
+            background: #fff0f3;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .faq-answer {
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding-left: 24px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2b2b2b;
+            color: #999;
+            padding: 60px 0 20px;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h3 {
+            color: white;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .copyright {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                height: auto;
+                flex-wrap: wrap;
+                padding: 10px 0;
+                gap: 15px;
+            }
+
+            nav {
+                order: 3;
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .guide-item {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                TmallMerchant<span>运营指南</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">入驻指南</a></li>
+                    <li><a href="#">运营策略</a></li>
+                    <li><a href="#">店铺装修</a></li>
+                    <li><a href="#">营销活动</a></li>
+                    <li><a href="#">数据分析</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">商家登录</a>
+                <a href="#" class="btn btn-primary">我要入驻</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Category Navigation -->
+    <div class="category-nav">
+        <div class="container">
+            <a href="#" class="active">综合</a>
+            <a href="#">品牌入驻</a>
+            <a href="#">天猫国际</a>
+            <a href="#">天猫超市</a>
+            <a href="#">天猫生活</a>
+            <a href="#">天猫服务</a>
+            <a href="#">天猫汽车</a>
+            <a href="#">天猫新零售</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>天猫商家<b class="highlight">全渠道运营</b>平台</h1>
+            <p>提供从品牌入驻、店铺搭建到流量获取、转化提升的一站式解决方案，助力品牌商家实现数字化增长。</p>
+            <div style="display: flex; gap: 15px; justify-content: center;">
+                <a href="#" class="btn btn-primary">查看入驻条件</a>
+                <a href="#" class="btn btn-outline">学习运营课程</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>99%</h3>
+                    <p>入驻成功率</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24h</h3>
+                    <p>智能客服响应</p>
+                </div>
+                <div class="stat-item">
+                    <h3>3000+</h3>
+                    <p>营销工具支持</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Section: Brand Resources -->
+        <section>
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>商家入驻与资质准备</h2>
+                    <p>了解不同类目的入驻门槛与所需资料</p>
+                </div>
+                <a href="#" class="view-all">查看所有类目 &rarr;</a>
+            </div>
+            <div class="grid-4">
+                <article class="card">
+                    <div class="card-img">
+                        <span class="card-tag">基础类目</span>
+                        <img src="https://picsum.photos/seed/tmall1/400/300" alt="天猫入驻流程">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">天猫入驻全流程解析</h3>
+                        <p class="card-desc">详细解读天猫招商规则、审核标准及入驻注意事项，助您快速完成店铺注册。</p>
+                        <div class="card-footer">
+                            <span>阅读时长 5min</span>
+                            <span>更新于 2023-10</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img">
+                        <span class="card-tag">品牌认证</span>
+                        <img src="https://picsum.photos/seed/tmall2/400/300" alt="品牌商标注册">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">品牌商标注册要求</h3>
+                        <p class="card-desc">商标R标与TM标在入驻时的区别，以及国际品牌如何进行天猫国际认证。</p>
+                        <div class="card-footer">
+                            <span>阅读时长 8min</span>
+                            <span>更新于 2023-10</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img">
+                        <span class="card-tag">资金要求</span>
+                        <img src="https://picsum.photos/seed/tmall3/400/300" alt="保证金缴纳">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">保证金与技术服务费详解</h3>
+                        <p class="card-desc">不同类目所需的保证金金额、技术服务年费标准及退还机制说明。</p>
+                        <div class="card-footer">
+                            <span>阅读时长 4min</span>
+                            <span>更新于 2023-09</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img">
+                        <span class="card-tag">企业资质</span>
+                        <img src="https://picsum.photos/seed/tmall4/400/300" alt="营业执照">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">企业营业执照办理指南</h3>
+                        <p class="card-desc">个体工商户与有限公司在入驻时的资质区别，以及经营范围的要求。</p>
+                        <div class="card-footer">
+                            <span>阅读时长 6min</span>
+                            <span>更新于 2023-09</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section: Operation Strategy -->
+        <section>
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>店铺运营与增长策略</h2>
+                    <p>提升店铺流量、转化率与用户粘性的实战方法</p>
+                </div>
+                <a href="#" class="view-all">查看更多策略 &rarr;</a>
+            </div>
+            <div class="grid-4">
+                <article class="card">
+                    <div class="card-img">
+                        <span class="card-tag">流量获取</span>
+                        <img src="https://picsum.photos/seed/op1/400/300" alt="直通车推广">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">直通车推广入门与进阶</h3>
+                        <p class="card-desc">如何设置关键词出价，利用直通车获取精准流量并降低PPC成本。</p>
+                        <div class="card-footer">
+                            <span>实战教程</span>
+                            <span>高级</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img">
+                        <span class="card-tag">内容营销</span>
+                        <img src="https://picsum.photos/seed/op2/400/300" alt="逛逛运营">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">天猫逛逛内容种草指南</h3>
+                        <p class="card-desc">利用短视频和图文笔记提升品牌曝光，通过内容营销引导用户下单。</p>
+                        <div class="card-footer">
+                            <span>实战教程</span>
+                            <span>中级</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img">
+                        <span class="card-tag">客户服务</span>
+                        <img src="https://picsum.photos/seed/op3/400/300" alt="客服技巧">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">提升客服转化率的技巧</h3>
+                        <p class="card-desc">掌握聊天技巧、响应速度及自动回复设置，有效降低店铺退款率。</p>
+                        <div class="card-footer">
+                            <span>实战教程</span>
+                            <span>初级</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img">
+                        <span class="card-tag">数据分析</span>
+                        <img src="https://picsum.photos/seed/op4/400/300" alt="生意参谋">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">生意参谋数据解读</h3>
+                        <p class="card-desc">如何通过访客数、转化率等核心指标诊断店铺问题，优化运营方向。</p>
+                        <div class="card-footer">
+                            <span>实战教程</span>
+                            <span>高级</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section: Quick Guides -->
+        <section>
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>商家核心工具箱</h2>
+                    <p>快速解决日常运营中的常见问题</p>
+                </div>
+            </div>
+            <div class="guide-list">
+                <div class="guide-item">
+                    <div class="guide-icon">🛒</div>
+                    <div class="guide-content">
+                        <h3>商品发布规范与上架技巧</h3>
+                        <p>包含主图要求、详情页设计逻辑、标题优化公式以及SKU设置规范。</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-icon">🛍️</div>
+                    <div class="guide-content">
+                        <h3>优惠券与满减活动设置</h3>
+                        <p>如何利用平台工具（如跨店满减、店铺优惠券）最大化提升客单价。</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-icon">📦</div>
+                    <div class="guide-content">
+                        <h3>物流发货与售后处理流程</h3>
+                        <p>电子面单打印规范、发货时效要求、退货流程及纠纷处理指南。</p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <div class="guide-icon">⚠️</div>
+                    <div class="guide-content">
+                        <h3>违规处罚规则与申诉指南</h3>
+                        <p>常见违规类型（如售假、虚假宣传）的预防措施及违规后的申诉通道。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section>
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>常见问题解答</h2>
+                    <p>关于天猫商家入驻与运营的疑问解答</p>
+                </div>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">天猫商家入驻需要什么条件？</div>
+                    <div class="faq-answer">通常需要企业营业执照、商标注册证（或受理通知书）、品牌授权书（部分类目）、公司注册资本等。具体需根据所选类目查看最新的招商规则。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">入驻后如何提升店铺权重？</div>
+                    <div class="faq-answer">提升DSR评分、保持良好的发货和售后体验、积极参与平台活动、优化搜索关键词以及提升转化率都是提升权重的重要因素。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">天猫和淘宝商家有什么区别？</div>
+                    <div class="faq-answer">天猫以品牌为主，强调品质保障和品牌形象，入驻门槛较高；淘宝以个人和小商家为主，门槛较低，侧重于个性化和小众市场。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">技术服务年费如何退还？</div>
+                    <div class="faq-answer">根据天猫规则，商家在考核期内（通常为一年）若达到销售额门槛（例如B类目需达到5万元），可退还技术服务年费或按比例返还。</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2>准备好开启您的天猫品牌之旅了吗？</h2>
+            <p>立即提交入驻申请，获取专业的运营顾问一对一指导。</p>
+            <a href="#" class="btn btn-primary" style="background: white; color: black; border: none;">立即提交申请</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>TmallMerchant</h3>
+                    <p>专注于为品牌商家提供天猫入驻指导、运营策略及数据分析服务，助力企业数字化转型。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>入驻指南</h4>
+                    <ul>
+                        <li><a href="#">入驻条件</a></li>
+                        <li><a href="#">流程说明</a></li>
+                        <li><a href="#">费用标准</a></li>
+                        <li><a href="#">类目招商</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>运营服务</h4>
+                    <ul>
+                        <li><a href="#">店铺装修</a></li>
+                        <li><a href="#">营销推广</a></li>
+                        <li><a href="#">客户服务</a></li>
+                        <li><a href="#">数据分析</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>支持与帮助</h4>
+                    <ul>
+                        <li><a href="#">商家社区</a></li>
+                        <li><a href="#">规则中心</a></li>
+                        <li><a href="#">联系客服</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 TmallMerchant Guide. All rights reserved. 本页面仅为演示设计。</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+  </html>
