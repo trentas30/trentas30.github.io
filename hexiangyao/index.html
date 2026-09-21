@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="鹤乡谣 - 传承非遗文化，展示湿地生态之美。这里有关于丹顶鹤的科普知识、摄影作品、保护故事以及相关的民俗文化介绍。">
+    <meta name="keywords" content="鹤乡谣, 丹顶鹤, 湿地保护, 非遗文化, 生态旅游, 鹤舞">
+    <title>鹤乡谣 - 湿地生态与丹顶鹤文化展示平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c5f2d; /* 湿地深绿 */
+            --secondary-color: #a8d5a2; /* 鹤羽浅绿 */
+            --accent-color: #e8c39e; /* 鹤喙/芦苇金 */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f9fbf9;
+            --white: #ffffff;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* 布局容器 */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .cta-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .cta-btn:hover {
+            background-color: #1e4620;
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://picsum.photos/seed/hero_wetland/1920/1080.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+            padding: 10px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--white);
+            color: var(--primary-color);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        /* Feature Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .about-image {
+            flex: 1;
+        }
+
+        .about-image img {
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Gallery / Showcase */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            padding: 20px;
+            color: var(--white);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        /* Conservation / News */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: var(--bg-light);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .news-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-date {
+            font-size: 12px;
+            color: var(--accent-color);
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .news-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .news-excerpt {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .read-more {
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 500;
+            align-self: flex-start;
+        }
+
+        /* FAQ */
+        .faq-section {
+            background-color: var(--white);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            color: var(--text-light);
+            font-size: 15px;
+            display: none;
+            padding-top: 10px;
+            border-top: 1px dashed #eee;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '-';
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 60px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .header-inner {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            nav ul {
+                margin: 15px 0;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-inner">
+            <div class="logo">
+                <span>❖</span> 鹤乡谣
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#about">湿地故事</a></li>
+                    <li><a href="#gallery">生态影像</a></li>
+                    <li><a href="#news">保护动态</a></li>
+                    <li><a href="#faq">科普问答</a></li>
+                </ul>
+            </nav>
+            <a href="#visit" class="cta-btn">预约参观</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>鹤舞九天，梦回湿地</h1>
+            <p>探索中国最大的湿地生态保护区，见证丹顶鹤的优雅舞姿，聆听大自然的古老歌谣。</p>
+            <div class="hero-buttons">
+                <a href="#about" class="cta-btn">了解更多</a>
+                <a href="#gallery" class="btn-outline">浏览影像</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Features -->
+    <section class="container">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🌿</div>
+                <h3>生态湿地</h3>
+                <p>拥有广阔的滩涂与芦苇荡，是候鸟迁徙的重要停歇地，维持着独特的湿地生态系统平衡。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🦢</div>
+                <h3>丹顶鹤之乡</h3>
+                <p>这里是世界上最大的丹顶鹤越冬地之一。每年冬季，数千只丹顶鹤在此翩翩起舞。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📜</div>
+                <h3>非遗文化</h3>
+                <p>传承千年的民间艺术与传说，将鹤的灵性融入当地民俗，构成了独特的“鹤乡文化”。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>湿地故事</h2>
+                <p>关于这片土地与飞鸟的守望</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>人与自然的和谐乐章</h3>
+                    <p>鹤乡谣不仅仅是一个地理名词，更是一首关于生命、自然与保护的宏大叙事。在这片广袤的土地上，芦苇随风摇曳，水鸟划破长空。</p>
+                    <p>自上世纪八十年代以来，这里建立了自然保护区，实施了严格的生态修复工程。通过退耕还湿、清理外来物种等措施，湿地面积逐年扩大，生物多样性显著提升。如今，这里是摄影爱好者的天堂，也是自然教育的重要基地。</p>
+                    <p>我们致力于保护这片净土，让每一只丹顶鹤都能在这里自由翱翔，让“鹤乡谣”的歌声永远回荡在湿地之上。</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://picsum.photos/seed/cranes_wide/600/400.jpg" alt="湿地全景">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>生态影像</h2>
+                <p>定格自然的瞬间，记录生命的律动</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/crane1/400/300.jpg" alt="丹顶鹤起飞">
+                    <div class="gallery-overlay">
+                        <h4>凌空一跃</h4>
+                        <p>晨曦中的起飞瞬间</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/reeds/400/300.jpg" alt="芦苇荡">
+                    <div class="gallery-overlay">
+                        <h4>金色芦苇</h4>
+                        <p>深秋的湿地色彩</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/waterbird/400/300.jpg" alt="水鸟觅食">
+                    <div class="gallery-overlay">
+                        <h4>静谧觅食</h4>
+                        <p>水鸟在浅滩休憩</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/seed/sunset_wetland/400/300.jpg" alt="日落湿地">
+                    <div class="gallery-overlay">
+                        <h4>日落余晖</h4>
+                        <p>湿地日落的壮丽</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section id="news" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>保护动态</h2>
+                <p>最新的科研监测与保护区资讯</p>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-img">
+                        <img src="https://picsum.photos/seed/science/500/300.jpg" alt="科研监测">
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date">2023-10-15</div>
+                        <h3 class="news-title">年度鸟类环志监测圆满结束</h3>
+                        <p class="news-excerpt">本年度共捕获并环志丹顶鹤及水鸟120余只，通过卫星追踪技术，我们进一步掌握了候鸟迁徙路线和栖息地偏好。</p>
+                        <a href="#" class="read-more">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-img">
+                        <img src="https://picsum.photos/seed/education/500/300.jpg" alt="自然教育">
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date">2023-09-28</div>
+                        <h3 class="news-title">开展“爱鸟周”科普进校园活动</h3>
+                        <p class="news-excerpt">保护区科普团队走进周边中小学，通过生动的讲座和标本展示，向孩子们普及湿地保护知识，培养环保意识。</p>
+                        <a href="#" class="read-more">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+                <article class="news-card">
+                    <div class="news-img">
+                        <img src="https://picsum.photos/seed/eco_tour/500/300.jpg" alt="生态旅游">
+                    </div>
+                    <div class="news-body">
+                        <div class="news-date">2023-09-10</div>
+                        <h3 class="news-title">规范生态旅游，实现可持续发展</h3>
+                        <p class="news-excerpt">为保护脆弱的湿地环境，保护区优化了观鸟栈道布局，并实施了严格的游客流量控制措施。</p>
+                        <a href="#" class="read-more">阅读全文 &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>科普问答</h2>
+                <p>关于丹顶鹤与湿地的常见问题</p>
+            </div>
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item">
+                    <div class="faq-question">为什么丹顶鹤被称为“湿地之神”？</div>
+                    <div class="faq-answer">
+                        丹顶鹤体态优雅，鸣声嘹亮，且寿命较长（可达50-60年），在传统文化中象征着长寿、吉祥和高洁。它们对栖息环境要求极高，通常只在生态良好的湿地出现，因此被视为湿地生态系统健康的指示物种。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">最佳观鸟季节是什么时候？</div>
+                    <div class="faq-answer">
+                        每年的11月至次年3月是观赏丹顶鹤的最佳季节。此时，大批丹顶鹤会从北方迁徙至此越冬，数量众多，且气温适宜，适合户外观察。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">在保护区可以喂食吗？</div>
+                    <div class="faq-answer">
+                        不可以。为了保护野生动物的健康和维持生态平衡，严禁游客向鸟类投喂任何食物。投喂可能导致鸟类消化系统疾病，甚至破坏其野外觅食的自然习性。
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">如何参与湿地保护志愿活动？</div>
+                    <div class="faq-answer">
+                        我们欢迎社会各界的爱心人士加入。您可以关注保护区官网发布的志愿者招募信息，参与清理垃圾、科普讲解或科研辅助等工作。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px; color: #fff;">
+                        <span style="color: var(--accent-color);">❖</span> 鹤乡谣
+                    </div>
+                    <p style="font-size: 14px; line-height: 1.8;">
+                        致力于湿地生态保护与科普教育，守护地球之肾，留住丹顶鹤的故乡。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">湿地故事</a></li>
+                        <li><a href="#gallery">生态影像</a></li>
+                        <li><a href="#news">保护动态</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>联系我们</h4>
+                    <ul>
+                        <li>地址：中国某省某市鹤乡保护区管理局</li>
+                        <li>电话：010-12345678</li>
+                        <li>邮箱：contact@heshangyao.com</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <p style="font-size: 14px;">扫码关注微信公众号，获取最新观鸟资讯。</p>
+                    <div style="width: 120px; height: 120px; background: #333; margin-top: 10px; display: flex; align-items: center; justify-content: center; color: #666;">
+                        二维码占位
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 鹤乡谣湿地生态展示平台 版权所有 | 仅供设计展示使用</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ 交互逻辑
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+
+        // 简单的平滑滚动效果修正
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
