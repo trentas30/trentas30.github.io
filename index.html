@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猫眼专业版-电影票房数据、排片分析与行业资讯平台</title>
+    <meta name="description" content="猫眼专业版是电影行业权威数据服务平台，提供实时票房数据、排片分析、观影指南及电影行业资讯。帮助影院经理、投资者及影迷获取专业电影市场信息。">
+    <meta name="keywords" content="猫眼专业版,电影票房,排片,猫眼数据,电影资讯,影讯">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #f5b642;
+            --primary-hover: #e09e2f;
+            --secondary-color: #1a1a1a;
+            --text-main: #333333;
+            --text-light: #666666;
+            --text-gray: #999999;
+            --bg-body: #f5f6f7;
+            --bg-card: #ffffff;
+            --spacing-unit: 8px;
+            --container-width: 1200px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--bg-card);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+            margin-left: 4px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-menu a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text-main);
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .nav-menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline {
+            border: 1px solid #e0e0e0;
+            color: var(--text-main);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: #fff;
+            padding: 80px 0;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-item h3 {
+            font-size: 32px;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin: 0;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            display: block;
+        }
+
+        /* Section Common */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            max-width: var(--container-width);
+            margin: 0 auto 40px;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-main);
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 24px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .section-more {
+            font-size: 14px;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+        }
+
+        .section-more:hover {
+            color: var(--primary-color);
+        }
+
+        /* Data Dashboard Grid */
+        .dashboard-grid {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .data-card {
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .data-card h4 {
+            font-size: 14px;
+            color: var(--text-gray);
+            margin-bottom: 12px;
+        }
+
+        .data-card .value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .data-card .trend {
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        .trend.up { color: #f5222d; }
+        .trend.down { color: #52c41a; }
+
+        /* Movie List */
+        .movie-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+        }
+
+        .movie-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .movie-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .poster-wrapper {
+            position: relative;
+            padding-top: 150%; /* 2:3 Aspect Ratio */
+            background-color: #f0f0f0;
+        }
+
+        .poster-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            padding: 16px;
+        }
+
+        .movie-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .movie-meta {
+            font-size: 12px;
+            color: var(--text-gray);
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .movie-tags span {
+            display: inline-block;
+            font-size: 10px;
+            padding: 2px 6px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+            color: var(--text-light);
+            margin-right: 4px;
+        }
+
+        /* Industry Analysis */
+        .analysis-section {
+            background-color: #fff;
+        }
+
+        .analysis-grid {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .analysis-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .analysis-item {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .analysis-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .analysis-thumb {
+            width: 120px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .analysis-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .analysis-content {
+            flex: 1;
+        }
+
+        .analysis-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .analysis-title:hover {
+            color: var(--primary-color);
+        }
+
+        .analysis-desc {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .analysis-meta {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        .sidebar-box {
+            background: #fff;
+            border-radius: var(--radius-md);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .sidebar-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .rank-list {
+            counter-reset: rank;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            position: relative;
+        }
+
+        .rank-item::before {
+            counter-increment: rank;
+            content: counter(rank);
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-gray);
+            margin-right: 12px;
+        }
+
+        .rank-item:nth-child(1)::before { background-color: #ff4d4f; color: #fff; }
+        .rank-item:nth-child(2)::before { background-color: #ff7a45; color: #fff; }
+        .rank-item:nth-child(3)::before { background-color: #ffc53d; color: #fff; }
+
+        .rank-title {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: #999;
+            padding: 60px 0 20px;
+        }
+
+        .footer-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand h2 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer-col h3 {
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-stats {
+                justify-content: center;
+            }
+            .hero-text p {
+                margin: 0 auto 30px;
+            }
+            .analysis-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .dashboard-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .footer-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-brand p {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                猫眼专业版<span>Pro</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">票房数据</a>
+                <a href="#">排片分析</a>
+                <a href="#">影院管理</a>
+                <a href="#">电影资讯</a>
+                <a href="#">行业报告</a>
+            </nav>
+            <div class="header-actions">
+                <a href="#" class="btn btn-outline">登录</a>
+                <a href="#" class="btn btn-primary">下载APP</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>洞察电影市场脉搏<br>赋能行业决策</h1>
+                    <p>猫眼专业版提供电影票房、排片、观影人群画像等全方位数据服务，是影院经理、投资方及行业从业者的必备工具。</p>
+                    <div style="display: flex; gap: 12px;">
+                        <a href="#" class="btn btn-primary">查看最新票房</a>
+                        <a href="#" class="btn btn-outline" style="border-color: rgba(255,255,255,0.3); color: #fff;">下载行业报告</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <h3>98%</h3>
+                            <p>影院覆盖率</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>24h</h3>
+                            <p>数据实时更新</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>500+</h3>
+                            <p>覆盖城市</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- Using Picsum with seed for consistency -->
+                    <img src="https://picsum.photos/seed/cinema/600/400" alt="电影数据分析展示" width="600" height="400">
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Stats -->
+        <section class="section">
+            <div class="dashboard-grid">
+                <div class="data-card">
+                    <h4>今日总票房 (元)</h4>
+                    <div class="value">2.4亿</div>
+                    <div class="trend up">↑ 12.5% 较昨日</div>
+                </div>
+                <div class="data-card">
+                    <h4>今日总场次</h4>
+                    <div class="value">45.2万</div>
+                    <div class="trend up">↑ 3.2% 较昨日</div>
+                </div>
+                <div class="data-card">
+                    <h4>今日总人次</h4>
+                    <div class="value">586万</div>
+                    <div class="trend down">↓ 1.1% 较昨日</div>
+                </div>
+                <div class="data-card">
+                    <h4>平均票价 (元)</h4>
+                    <div class="value">40.8</div>
+                    <div class="trend up">↑ 0.3% 较昨日</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hot Movies Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">热门影片</h2>
+                <a href="#" class="section-more">查看全部 <span>&gt;</span></a>
+            </div>
+            <div class="movie-container">
+                <div class="movie-grid">
+                    <article class="movie-card">
+                        <div class="poster-wrapper">
+                            <img src="https://picsum.photos/seed/movie1/300/450" alt="电影海报">
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">星际穿越：重启</h3>
+                            <div class="movie-meta">
+                                <span>科幻 / 冒险</span>
+                                <span>豆瓣 8.5</span>
+                            </div>
+                            <div class="movie-tags">
+                                <span>IMAX</span>
+                                <span>3D</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="movie-card">
+                        <div class="poster-wrapper">
+                            <img src="https://picsum.photos/seed/movie2/300/450" alt="电影海报">
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">城市之光</h3>
+                            <div class="movie-meta">
+                                <span>剧情 / 爱情</span>
+                                <span>豆瓣 9.0</span>
+                            </div>
+                            <div class="movie-tags">
+                                <span>经典</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="movie-card">
+                        <div class="poster-wrapper">
+                            <img src="https://picsum.photos/seed/movie3/300/450" alt="电影海报">
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">深海探险记</h3>
+                            <div class="movie-meta">
+                                <span>动画 / 奇幻</span>
+                                <span>豆瓣 7.8</span>
+                            </div>
+                            <div class="movie-tags">
+                                <span>家庭</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="movie-card">
+                        <div class="poster-wrapper">
+                            <img src="https://picsum.photos/seed/movie4/300/450" alt="电影海报">
+                        </div>
+                        <div class="movie-info">
+                            <h3 class="movie-title">极速车魂</h3>
+                            <div class="movie-meta">
+                                <span>动作 / 竞速</span>
+                                <span>豆瓣 6.9</span>
+                            </div>
+                            <div class="movie-tags">
+                                <span>爆米花</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industry Analysis & Sidebar -->
+        <section class="section analysis-section">
+            <div class="section-header">
+                <h2 class="section-title">行业深度分析</h2>
+            </div>
+            <div class="analysis-grid">
+                <div class="analysis-list">
+                    <article class="analysis-item">
+                        <div class="analysis-thumb">
+                            <img src="https://picsum.photos/seed/news1/200/150" alt="行业新闻">
+                        </div>
+                        <div class="analysis-content">
+                            <h3 class="analysis-title"><a href="#">暑期档票房持续走高，动画电影成为新增长点</a></h3>
+                            <p class="analysis-desc">根据猫眼专业版数据显示，今年暑期档动画类影片占比显著提升，带动了整体观影人次增长。专家分析认为，内容创新与宣发策略是关键因素...</p>
+                            <div class="analysis-meta">
+                                <span>2023-10-24</span> | <span>数据洞察</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="analysis-item">
+                        <div class="analysis-thumb">
+                            <img src="https://picsum.photos/seed/news2/200/150" alt="行业新闻">
+                        </div>
+                        <div class="analysis-content">
+                            <h3 class="analysis-title"><a href="#">影院数字化升级：智慧票务系统提升运营效率</a></h3>
+                            <p class="analysis-desc">随着科技的发展，传统影院正在加速数字化转型。通过引入智能排片系统和线上选座功能，影院能够更精准地把握观众偏好，优化资源配置。</p>
+                            <div class="analysis-meta">
+                                <span>2023-10-22</span> | <span>技术应用</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="analysis-item">
+                        <div class="analysis-thumb">
+                            <img src="https://picsum.photos/seed/news3/200/150" alt="行业新闻">
+                        </div>
+                        <div class="analysis-content">
+                            <h3 class="analysis-title"><a href="#">国庆档回顾：国产电影领跑，口碑票房双丰收</a></h3>
+                            <p class="analysis-desc">国庆七天假期，全国电影票房突破XX亿元，其中多部国产佳作获得观众认可。猫眼专业版将持续跟踪后续长尾效应数据。</p>
+                            <div class="analysis-meta">
+                                <span>2023-10-01</span> | <span>市场报告</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <aside class="sidebar">
+                    <div class="sidebar-box">
+                        <h4 class="sidebar-title">排片热榜</h4>
+                        <ul class="rank-list">
+                            <li class="rank-item">
+                                <a href="#" class="rank-title">星际穿越：重启</a>
+                            </li>
+                            <li class="rank-item">
+                                <a href="#" class="rank-title">城市之光</a>
+                            </li>
+                            <li class="rank-item">
+                                <a href="#" class="rank-title">深海探险记</a>
+                            </li>
+                            <li class="rank-item">
+                                <a href="#" class="rank-title">极速车魂</a>
+                            </li>
+                            <li class="rank-item">
+                                <a href="#" class="rank-title">消失的她</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-box" style="margin-top: 20px;">
+                        <h4 class="sidebar-title">观影指南</h4>
+                        <ul class="rank-list">
+                            <li class="rank-item">
+                                <a href="#" class="rank-title">如何选择最佳观影座位</a>
+                            </li>
+                            <li class="rank-item">
+                                <a href="#" class="rank-title">IMAX与普通3D的区别</a>
+                            </li>
+                            <li class="rank-item">
+                                <a href="#" class="rank-title">电影票退改签政策解析</a>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <h2>猫眼专业版</h2>
+                <p>致力于为电影行业提供专业、准确、及时的数据服务。连接内容与市场，洞察电影产业未来。</p>
+            </div>
+            <div class="footer-col">
+                <h3>产品服务</h3>
+                <ul>
+                    <li><a href="#">影院管理系统</a></li>
+                    <li><a href="#">数据大屏</a></li>
+                    <li><a href="#">排片工具</a></li>
+                    <li><a href="#">票务API</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>关于我们</h3>
+                <ul>
+                    <li><a href="#">公司简介</a></li>
+                    <li><a href="#">加入我们</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">服务条款</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>关注我们</h3>
+                <ul>
+                    <li><a href="#">微信公众号</a></li>
+                    <li><a href="#">新浪微博</a></li>
+                    <li><a href="#">知乎专栏</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 猫眼专业版. All Rights Reserved. 京ICP备12345678号</p>
+        </div>
+    </footer>
+
+</body>
+                      </html>
