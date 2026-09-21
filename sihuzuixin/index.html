@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四虎最新网站 - 高清影视资源聚合与在线观看指南</title>
+    <meta name="description" content="四虎最新网站提供海量高清影视资源聚合服务，包含最新电影、热门剧集及分类推荐。本站致力于为用户提供安全、稳定的在线观看体验，所有资源均来源于网络，仅供学习交流使用。">
+    <meta name="keywords" content="四虎最新网站,在线观看,高清影视,影视资源,免费电影,最新剧集">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #e63946;
+            --secondary-color: #1d3557;
+            --bg-color: #f1f3f4;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-sub: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            font-size: 1rem;
+            color: var(--text-main);
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .search-box {
+            display: flex;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 4px 12px;
+            background: #f9f9f9;
+        }
+
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 0.9rem;
+            width: 150px;
+        }
+
+        .search-box button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-sub);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #2a4d69 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--spacing-unit);
+        }
+
+        /* Categories Grid */
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .category-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .category-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .category-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .category-name {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .video-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+
+        .video-card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 160px;
+            background-color: #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .video-card:hover .thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .video-info {
+            padding: 16px;
+        }
+
+        .video-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        .tag {
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        /* Ranking List */
+        .ranking-list {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .ranking-item:last-child {
+            border-bottom: none;
+        }
+
+        .rank-num {
+            width: 30px;
+            height: 30px;
+            background-color: #f1f3f4;
+            color: var(--text-sub);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 0.9rem;
+        }
+
+        .ranking-item:nth-child(1) .rank-num { background-color: #ffd700; color: #fff; }
+        .ranking-item:nth-child(2) .rank-num { background-color: #c0c0c0; color: #fff; }
+        .ranking-item:nth-child(3) .rank-num { background-color: #cd7f32; color: #fff; }
+
+        .rank-info {
+            flex: 1;
+        }
+
+        .rank-title {
+            font-weight: 500;
+            display: block;
+        }
+
+        .rank-views {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 20px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                height: auto;
+                padding: 10px;
+                gap: 10px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span>四虎</span>最新网站
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">分类</a></li>
+                    <li><a href="#">排行榜</a></li>
+                    <li><a href="#">最新更新</a></li>
+                </ul>
+            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="搜索资源...">
+                <button>🔍</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>探索无限精彩，高清影视随心看</h1>
+        <p>汇集全网最新热门影视资源，提供稳定流畅的在线播放体验。所有内容仅供学习交流，请勿用于商业用途。</p>
+    </section>
+
+    <main class="container">
+        <!-- Categories Section -->
+        <section>
+            <div class="section-title">热门分类</div>
+            <div class="category-grid">
+                <div class="category-card">
+                    <span class="category-icon">🎬</span>
+                    <span class="category-name">最新电影</span>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">📺</span>
+                    <span class="category-name">热门剧集</span>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">🇨🇳</span>
+                    <span class="category-name">国产剧</span>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">🇺🇸</span>
+                    <span class="category-name">美剧</span>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">🇰🇷</span>
+                    <span class="category-name">韩剧</span>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">🇯🇵</span>
+                    <span class="category-name">日剧</span>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">🎭</span>
+                    <span class="category-name">动漫</span>
+                </div>
+                <div class="category-card">
+                    <span class="category-icon">🎥</span>
+                    <span class="category-name">纪录片</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Updates Section -->
+        <section>
+            <div class="section-title">
+                <span>最新更新</span>
+                <a href="#" style="font-size: 0.9rem; color: var(--primary-color);">查看更多 &gt;</a>
+            </div>
+            <div class="video-grid">
+                <!-- Video Card 1 -->
+                <article class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/movie1/400/300" alt="电影封面">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">星际穿越：未知的旅程</h3>
+                        <div class="video-meta">
+                            <span class="tag">科幻</span>
+                            <span>2小时前更新</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Card 2 -->
+                <article class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/movie2/400/300" alt="电影封面">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">都市传说：深夜食堂</h3>
+                        <div class="video-meta">
+                            <span class="tag">悬疑</span>
+                            <span>5小时前更新</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Card 3 -->
+                <article class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/movie3/400/300" alt="电影封面">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">时光旅行者的日记</h3>
+                        <div class="video-meta">
+                            <span class="tag">爱情</span>
+                            <span>昨天更新</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Video Card 4 -->
+                <article class="video-card">
+                    <div class="thumbnail">
+                        <img src="https://picsum.photos/seed/movie4/400/300" alt="电影封面">
+                        <div class="play-icon">▶</div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">极限运动：攀岩挑战</h3>
+                        <div class="video-meta">
+                            <span class="tag">纪录片</span>
+                            <span>昨天更新</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Ranking Section -->
+        <section>
+            <div class="section-title">
+                <span>本周热门排行</span>
+            </div>
+            <div class="ranking-list">
+                <div class="ranking-item">
+                    <div class="rank-num">1</div>
+                    <div class="rank-info">
+                        <span class="rank-title">绝地求生：大逃杀重制版</span>
+                        <span class="rank-views">播放量：125.4万</span>
+                    </div>
+                </div>
+                <div class="ranking-item">
+                    <div class="rank-num">2</div>
+                    <div class="rank-info">
+                        <span class="rank-title">赛博朋克：边缘行者全集</span>
+                        <span class="rank-views">播放量：98.2万</span>
+                    </div>
+                </div>
+                <div class="ranking-item">
+                    <div class="rank-num">3</div>
+                    <div class="rank-info">
+                        <span class="rank-title">复仇者联盟：终极决战</span>
+                        <span class="rank-views">播放量：85.6万</span>
+                    </div>
+                </div>
+                <div class="ranking-item">
+                    <div class="rank-num">4</div>
+                    <div class="rank-info">
+                        <span class="rank-title">黑客帝国：觉醒之路</span>
+                        <span class="rank-views">播放量：72.1万</span>
+                    </div>
+                </div>
+                <div class="ranking-item">
+                    <div class="rank-num">5</div>
+                    <div class="rank-info">
+                        <span class="rank-title">泰坦尼克号：经典回顾</span>
+                        <span class="rank-views">播放量：65.3万</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>关于我们</h3>
+                <p style="font-size: 0.9rem; color: #ccc; line-height: 1.8;">
+                    四虎最新网站致力于为用户提供最便捷的影视资源搜索服务。我们尊重知识产权，所有资源均来源于网络，仅供个人学习研究使用。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>快速导航</h3>
+                <ul>
+                    <li><a href="#">网站地图</a></li>
+                    <li><a href="#">免责声明</a></li>
+                    <li><a href="#">联系合作</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>热门标签</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                    <a href="#" style="font-size: 0.85rem; color: #ccc; background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px;">高清</a>
+                    <a href="#" style="font-size: 0.85rem; color: #ccc; background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px;">免费</a>
+                    <a href="#" style="font-size: 0.85rem; color: #ccc; background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px;">无广告</a>
+                    <a href="#" style="font-size: 0.85rem; color: #ccc; background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px;">在线播放</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023-2024 四虎最新网站. All Rights Reserved. 本站内容均来自互联网，仅供学习交流，请勿用于商业用途。</p>
+        </div>
+    </footer>
+
+</body>
+  </html>
