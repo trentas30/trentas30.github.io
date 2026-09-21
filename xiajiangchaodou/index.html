@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="虾酱炒豆腐做法大全，提供正宗家常虾酱炒豆腐的制作方法、食材搭配、烹饪技巧及营养分析。学会这道经典下饭菜，让豆腐鲜香入味。">
+    <meta name="keywords" content="虾酱炒豆腐,虾酱豆腐,家常菜做法,下饭菜,豆腐做法">
+    <title>虾酱炒豆腐-经典家常下饭菜做法与烹饪指南</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #d35400;
+            --secondary-color: #2c3e50;
+            --bg-color: #fdfbf7;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 8px;
+            --spacing: 20px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Layout & Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos/seed/shrimp/1200/600');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Ingredients Section */
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            display: inline-block;
+        }
+
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+
+        .card-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: var(--text-light);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+
+        /* Main Recipe Steps */
+        .recipe-container {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 50px;
+        }
+
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+        }
+
+        .step-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 30px;
+        }
+
+        .step-item::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 36px;
+            height: 36px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: bold;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--secondary-color);
+        }
+
+        .tips-box {
+            background-color: #fff3e0;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Nutrition & Info */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .info-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        .info-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 50px;
+        }
+
+        details {
+            background: var(--card-bg);
+            margin-bottom: 10px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: 600;
+            list-style: none;
+            position: relative;
+            padding-right: 40px;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+
+        details[open] summary::after {
+            content: '-';
+        }
+
+        details[open] summary {
+            border-bottom: 1px solid #eee;
+        }
+
+        .faq-content {
+            padding: 20px;
+            color: var(--text-light);
+            background-color: #fafafa;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            color: #888;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            border-top: 1px solid #3e4e64;
+            padding-top: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .header-inner {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                gap: 15px;
+                font-size: 0.9rem;
+            }
+
+            .recipe-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <a href="#" class="logo">
+            <span>家常美食</span> 烹饪指南
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#ingredients">食材准备</a></li>
+                <li><a href="#steps">制作步骤</a></li>
+                <li><a href="#tips">烹饪技巧</a></li>
+                <li><a href="#faq">常见问题</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>虾酱炒豆腐</h1>
+        <p>一道极具咸鲜香味的经典家常菜。豆腐嫩滑，虾酱浓郁，是米饭的绝佳伴侣。</p>
+    </section>
+
+    <!-- Intro -->
+    <section style="margin-bottom: 40px; text-align: center;">
+        <p style="max-width: 800px; margin: 0 auto; color: var(--text-light);">
+            虾酱炒豆腐（又称酱豆腐）是中国北方常见的家常菜。利用发酵虾酱独特的咸鲜风味，与嫩豆腐同炒，无需过多调料即可激发出令人食欲大开的香气。这道菜成本低廉，制作简单，却蕴含着丰富的蛋白质与微量元素。
+        </p>
+    </section>
+
+    <!-- Ingredients & Variations -->
+    <section id="ingredients">
+        <h2 class="section-title">食材准备</h2>
+        <div class="recipe-grid">
+            <div class="card">
+                <img src="https://picsum.photos/seed/tofu/400/300" alt="嫩豆腐" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">主料</h3>
+                    <p class="card-text">
+                        <strong>嫩豆腐</strong> 300克（北豆腐亦可，但口感稍硬）<br>
+                        <strong>虾酱</strong> 1汤匙（推荐红膏虾酱，风味更佳）
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://picsum.photos/seed/garlic/400/300" alt="配菜" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">辅料</h3>
+                    <p class="card-text">
+                        <strong>大葱</strong> 1根<br>
+                        <strong>大蒜</strong> 3瓣（切片或切末）<br>
+                        <strong>植物油</strong> 适量<br>
+                        <strong>白糖</strong> 少许（提鲜用）
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://picsum.photos/seed/chili/400/300" alt="调味" class="card-img">
+                <div class="card-body">
+                    <h3 class="card-title">可选调味</h3>
+                    <p class="card-text">
+                        <strong>红辣椒</strong> 1个（增加色泽和微辣口感）<br>
+                        <strong>生抽</strong> 少许（若虾酱过咸可少量添加）<br>
+                        <strong>料酒</strong> 1勺（去腥增香）
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cooking Steps -->
+    <section id="steps">
+        <h2 class="section-title">制作步骤</h2>
+        <div class="recipe-container">
+            <ol class="step-list">
+                <li class="step-item">
+                    <h3 class="step-title">处理食材</h3>
+                    <p>将嫩豆腐切成约2厘米见方的块状。大葱切成葱花，大蒜切片，红辣椒切段备用。虾酱如果颗粒较大，可以用刀背稍微压碎。</p>
+                </li>
+                <li class="step-item">
+                    <h3 class="step-title">煎制豆腐</h3>
+                    <p>锅中倒入适量植物油，油温五成热时，放入豆腐块。中小火慢煎，直到豆腐表面变成金黄色且定型，盛出备用。煎过的豆腐更不易碎。</p>
+                </li>
+                <li class="step-item">
+                    <h3 class="step-title">爆香调料</h3>
+                    <p>锅中留底油，下入蒜片、红辣椒段爆香。随后加入一汤匙虾酱，快速翻炒，炒出虾酱的香味（注意不要炒焦）。</p>
+                </li>
+                <li class="step-item">
+                    <h3 class="step-title">合炒入味</h3>
+                    <p>将煎好的豆腐倒回锅中，轻轻翻动，让豆腐均匀裹上虾酱。加入少许白糖提鲜，如果觉得太咸可以滴入几滴料酒或生抽。继续翻炒均匀即可出锅。</p>
+                    <div class="tips-box">
+                        <strong>小贴士：</strong> 虾酱本身含盐量较高，建议在最后尝味时再决定是否加盐，以免过咸。
+                    </div>
+                </li>
+                <li class="step-item">
+                    <h3 class="step-title">装盘上桌</h3>
+                    <p>撒上葱花点缀，趁热搭配白米饭食用，风味最佳。</p>
+                </li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- Nutritional Info -->
+    <section id="nutrition" style="margin-bottom: 50px;">
+        <h2 class="section-title">营养分析（每100克）</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-value">~80</div>
+                <div class="info-label">千卡热量</div>
+            </div>
+            <div class="info-item">
+                <div class="info-value">~10g</div>
+                <div class="info-label">蛋白质</div>
+            </div>
+            <div class="info-item">
+                <div class="info-value">~4g</div>
+                <div class="info-label">脂肪</div>
+            </div>
+            <div class="info-item">
+                <div class="info-value">~3g</div>
+                <div class="info-label">碳水化合物</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section id="tips">
+        <h2 class="section-title">烹饪技巧与注意事项</h2>
+        <div class="recipe-grid">
+            <article class="card">
+                <div class="card-body">
+                    <h3 class="card-title">如何选择虾酱？</h3>
+                    <p class="card-text">优质的虾酱色泽红亮，气味浓郁但不刺鼻，质地粘稠。避免购买颜色过于深黑或有异味的虾酱，以免影响菜肴口感。</p>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-body">
+                    <h3 class="card-title">防止豆腐碎裂</h3>
+                    <p class="card-text">除了先煎后炒，下锅时动作要轻柔。如果喜欢口感更嫩的，可以在豆腐焯水后沥干水分再炒，但要注意控制火候。</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq-section">
+        <h2 class="section-title">常见问题 (FAQ)</h2>
+        <details>
+            <summary>虾酱炒豆腐太咸了怎么办？</summary>
+            <div class="faq-content">
+                <p>如果觉得过咸，可以在炒制过程中加入少许白糖中和咸味，或者滴入几滴柠檬汁、白醋来提鲜解腻。另外，在出锅前撒入一把切好的青菜（如菠菜或油菜）也是很好的补救方法。</p>
+            </div>
+        </details>
+        <details>
+            <summary>可以用其他酱料代替虾酱吗？</summary>
+            <div class="faq-content">
+                <p>虽然风味不同，但可以用豆瓣酱、豆豉酱或海鲜酱代替，但口感会从“咸鲜”变为“酱香”，且颜色会更深。若想保留豆腐原本的鲜味，建议少放酱料，多加葱花提香。</p>
+            </div>
+        </details>
+        <details>
+            <summary>这道菜适合减肥期间吃吗？</summary>
+            <div class="faq-content">
+                <p>适量食用是可以的。豆腐是优质植物蛋白，虾酱提供矿物质。但由于虾酱含盐量高且烹饪时通常会放油，建议控制分量，不要配大量米饭，可搭配深色蔬菜增加饱腹感。</p>
+            </div>
+        </details>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container footer-content">
+        <div class="footer-links">
+            <a href="#">关于本站</a>
+            <a href="#">美食分类</a>
+            <a href="#">食谱投稿</a>
+            <a href="#">联系我们</a>
+        </div>
+        <p class="copyright">© 2023 家常美食烹饪指南. All Rights Reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
