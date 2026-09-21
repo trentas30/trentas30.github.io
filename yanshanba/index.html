@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="盐山吧 - 盐山县本地生活服务平台，提供最新新闻资讯、便民信息、招聘求职、房屋租售及本地论坛交流。关注盐山发展，连接你我生活。">
+    <meta name="keywords" content="盐山吧, 盐山县, 盐山新闻, 盐山便民, 盐山论坛, 盐山招聘, 盐山房产">
+    <title>盐山吧 - 盐山县本地生活资讯与便民服务平台</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f0f4f8;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --text-light: #999999;
+            --border-color: #e1e4e8;
+            --white: #ffffff;
+            --accent: #ff6b35;
+            --container-width: 1200px;
+            --header-height: 70px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #f9fafb;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            height: var(--header-height);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 16px;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: #004494;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0056b3 0%, #003d80 100%);
+            color: var(--white);
+            padding: 60px 0;
+            margin-bottom: 30px;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .hero-text h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.15);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-stats {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Main Content Grid */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* News Section */
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            font-size: 14px;
+            color: var(--text-gray);
+            font-weight: 400;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .news-item {
+            display: flex;
+            gap: 15px;
+            background: var(--white);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .news-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .news-thumb {
+            width: 180px;
+            height: 120px;
+            background-color: #eee;
+            border-radius: 4px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .news-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .news-title {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 8px;
+        }
+
+        .news-meta {
+            font-size: 12px;
+            color: var(--text-light);
+            display: flex;
+            gap: 15px;
+        }
+
+        .tag {
+            background: #eef4fc;
+            color: var(--primary-color);
+            padding: 2px 6px;
+            border-radius: 2px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .widget {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .hot-list {
+            counter-reset: hot-counter;
+        }
+
+        .hot-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .hot-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .hot-item::before {
+            counter-increment: hot-counter;
+            content: counter(hot-counter);
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            color: var(--text-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            margin-right: 12px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .hot-item:nth-child(1)::before { background: #ff6b35; color: white; }
+        .hot-item:nth-child(2)::before { background: #f0c040; color: white; }
+        .hot-item:nth-child(3)::before { background: #c0c0c0; color: white; }
+
+        .hot-link {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .hot-link:hover {
+            color: var(--primary-color);
+        }
+
+        /* Service Cards */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 25px 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0,86,179,0.1);
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .service-name {
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        /* Forum Section */
+        .forum-section {
+            background: var(--white);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            margin-bottom: 40px;
+        }
+
+        .forum-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .forum-board-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .board-card {
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.2s;
+        }
+
+        .board-card:hover {
+            background: var(--secondary-color);
+            border-color: transparent;
+        }
+
+        .board-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .board-info h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .board-info p {
+            font-size: 12px;
+            color: var(--text-gray);
+        }
+
+        .board-stats {
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .stat-num {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: #b0b0b0;
+            padding: 50px 0 20px;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            .hero-stats {
+                width: 100%;
+            }
+            .service-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            .header-actions .btn {
+                padding: 6px 15px;
+                font-size: 12px;
+            }
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span>盐山吧</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#" class="active">首页</a>
+                <a href="#">本地资讯</a>
+                <a href="#">房产信息</a>
+                <a href="#">招聘求职</a>
+                <a href="#">二手交易</a>
+                <a href="#">生活服务</a>
+                <a href="#">车友之家</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">发布信息</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>连接盐山，服务你我</h1>
+                <p>盐山县本地最大的综合生活服务平台，为您提供最新的新闻资讯、最全的便民信息、最热的本地话题。</p>
+                <div class="hero-badges">
+                    <span class="badge">本地生活</span>
+                    <span class="badge">真实可信</span>
+                    <span class="badge">活跃社区</span>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h3>10W+</h3>
+                    <p>注册用户</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5K+</h3>
+                    <p>今日发帖</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>本地化服务</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Service Grid -->
+        <section class="service-grid">
+            <div class="service-card">
+                <span class="service-icon">📰</span>
+                <div class="service-name">今日头条</div>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🏠</span>
+                <div class="service-name">房屋租售</div>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💼</span>
+                <div class="service-name">求职招聘</div>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🚗</span>
+                <div class="service-name">二手车</div>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">👗</span>
+                <div class="service-name">跳蚤市场</div>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🍽️</span>
+                <div class="service-name">美食探店</div>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🏥</span>
+                <div class="service-name">便民服务</div>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💡</span>
+                <div class="service-name">同城活动</div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="main-layout">
+            <!-- News Feed -->
+            <main>
+                <div class="section-title">
+                    <span>最新资讯</span>
+                    <a href="#">查看更多 &gt;</a>
+                </div>
+                <div class="news-grid">
+                    <div class="news-list">
+                        <article class="news-item">
+                            <img src="https://picsum.photos/seed/saltnews1/300/200" alt="新闻配图" class="news-thumb">
+                            <div class="news-info">
+                                <h3 class="news-title"><a href="#">盐山县召开2024年春季重点项目推进工作会议</a></h3>
+                                <div class="news-meta">
+                                    <span class="tag">本地新闻</span>
+                                    <span>2小时前</span>
+                                    <span>评论 128</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-item">
+                            <img src="https://picsum.photos/seed/saltnews2/300/200" alt="新闻配图" class="news-thumb">
+                            <div class="news-info">
+                                <h3 class="news-title"><a href="#">盐山县开展“文明城市创建”专项整治行动</a></h3>
+                                <div class="news-meta">
+                                    <span class="tag">政务公开</span>
+                                    <span>4小时前</span>
+                                    <span>评论 85</span>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="news-item">
+                            <img src="https://picsum.photos/seed/saltnews3/300/200" alt="新闻配图" class="news-thumb">
+                            <div class="news-info">
+                                <h3 class="news-title"><a href="#">盐山交警大队发布清明节期间交通出行提示</a></h3>
+                                <div class="news-meta">
+                                    <span class="tag">交通出行</span>
+                                    <span>6小时前</span>
+                                    <span>评论 42</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <aside class="sidebar">
+                        <div class="widget">
+                            <h3 class="section-title" style="border:none; padding:0; margin-bottom:15px;">24小时热榜</h3>
+                            <ul class="hot-list">
+                                <li class="hot-item"><a href="#" class="hot-link">盐山县人民医院门诊部新址启用通知</a></li>
+                                <li class="hot-item"><a href="#" class="hot-link">关于举办盐山县“梨花节”文化活动的公告</a></li>
+                                <li class="hot-item"><a href="#" class="hot-link">盐山本地商家推荐：诚信经营典范名单</a></li>
+                                <li class="hot-item"><a href="#" class="hot-link">最新公交线路调整通知，请广大市民留意</a></li>
+                                <li class="hot-item"><a href="#" class="hot-link">寻找失物：在盐山汽车站附近遗失钱包</a></li>
+                                <li class="hot-item"><a href="#" class="hot-link">盐山中学高考百日誓师大会圆满举行</a></li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+
+                <!-- Forum Boards -->
+                <div class="forum-section">
+                    <div class="forum-header">
+                        <div class="section-title" style="border:none; padding:0; margin:0;">
+                            <span>热门板块</span>
+                            <a href="#">进入论坛 &gt;</a>
+                        </div>
+                    </div>
+                    <div class="forum-board-list">
+                        <div class="board-card">
+                            <div class="board-icon">💬</div>
+                            <div class="board-info">
+                                <h4>盐山闲聊</h4>
+                                <p>畅所欲言，聊聊家常</p>
+                            </div>
+                            <div class="board-stats">
+                                <div class="stat-num">1.2w</div>
+                                <div class="stat-label">帖子</div>
+                            </div>
+                        </div>
+                        <div class="board-card">
+                            <div class="board-icon">🔍</div>
+                            <div class="board-info">
+                                <h4>求职招聘</h4>
+                                <p>企业招人，个人找工作</p>
+                            </div>
+                            <div class="board-stats">
+                                <div class="stat-num">856</div>
+                                <div class="stat-label">职位</div>
+                            </div>
+                        </div>
+                        <div class="board-card">
+                            <div class="board-icon">🏠</div>
+                            <div class="board-info">
+                                <h4>房产交易</h4>
+                                <p>新房二手房，租房信息</p>
+                            </div>
+                            <div class="board-stats">
+                                <div class="stat-num">342</div>
+                                <div class="stat-label">房源</div>
+                            </div>
+                        </div>
+                        <div class="board-card">
+                            <div class="board-icon">🚗</div>
+                            <div class="board-info">
+                                <h4>车辆买卖</h4>
+                                <p>二手车，配件维修</p>
+                            </div>
+                            <div class="board-stats">
+                                <div class="stat-num">210</div>
+                                <div class="stat-label">车辆</div>
+                            </div>
+                        </div>
+                        <div class="board-card">
+                            <div class="board-icon">🍔</div>
+                            <div class="board-info">
+                                <h4>美食探店</h4>
+                                <p>发现盐山好吃的</p>
+                            </div>
+                            <div class="board-stats">
+                                <div class="stat-num">530</div>
+                                <div class="stat-label">点评</div>
+                            </div>
+                        </div>
+                        <div class="board-card">
+                            <div class="board-icon">🎈</div>
+                            <div class="board-info">
+                                <h4>同城活动</h4>
+                                <p>聚会、演出、展览</p>
+                            </div>
+                            <div class="board-stats">
+                                <div class="stat-num">120</div>
+                                <div class="stat-label">活动</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <!-- Right Sidebar -->
+            <aside class="sidebar">
+                <!-- Login/Ad Placeholder -->
+                <div class="widget" style="background: linear-gradient(to bottom right, #0056b3, #003d80); color: white; text-align: center;">
+                    <h3 style="margin-bottom: 10px;">登录盐山吧</h3>
+                    <p style="font-size: 13px; opacity: 0.9; margin-bottom: 20px;">发布信息、参与讨论、享受会员特权</p>
+                    <button class="btn" style="background: white; color: var(--primary-color); width: 100%;">立即注册</button>
+                </div>
+
+                <!-- Local Weather -->
+                <div class="widget">
+                    <h3 class="section-title" style="border:none; padding:0; margin-bottom:15px; font-size:16px;">盐山天气</h3>
+                    <div style="text-align: center; padding: 10px 0;">
+                        <div style="font-size: 40px; margin-bottom: 5px;">☀️</div>
+                        <div style="font-size: 24px; font-weight: bold; margin-bottom: 5px;">18°C</div>
+                        <div style="font-size: 14px; color: var(--text-gray);">晴转多云</div>
+                        <div style="display: flex; justify-content: space-around; margin-top: 15px; font-size: 12px;">
+                            <span>最高 22°</span>
+                            <span>最低 8°</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="widget">
+                    <h3 class="section-title" style="border:none; padding:0; margin-bottom:15px; font-size:16px;">联系我们</h3>
+                    <ul style="font-size: 13px; color: var(--text-gray); line-height: 2;">
+                        <li>📞 客服热线：0317-1234567</li>
+                        <li>📧 投稿邮箱：tougao@yanshanba.com</li>
+                        <li>📍 地址：河北省沧州市盐山县</li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 15px; color: white;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        <span>盐山吧</span>
+                    </div>
+                    <p style="opacity: 0.7; font-size: 13px; line-height: 1.8;">
+                        盐山吧致力于打造盐山县最真实、最活跃、最有价值的本地网络社区。我们关注盐山发展，记录百姓生活，连接你我情感。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#">首页</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">房产频道</a></li>
+                        <li><a href="#">人才市场</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>服务指南</h4>
+                    <ul>
+                        <li><a href="#">发布信息</a></li>
+                        <li><a href="#">会员注册</a></li>
+                        <li><a href="#">商家入驻</a></li>
+                        <li><a href="#">广告服务</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">新浪微博</a></li>
+                        <li><a href="#">官方APP下载</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 盐山吧 版权所有 | 冀ICP备XXXXXXXX号 | 互联网违法不良信息举报电话：0317-1234567</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+                                  </html>
